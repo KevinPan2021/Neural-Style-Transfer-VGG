@@ -24,7 +24,7 @@ This project aims to preform Neural Style Transfer using VGG19 pretrained model.
 ### Code Structure:
 ```bash
 ├── GUI.py (Run to generate a GUI)
-├── main.py (Run to train model)
+├── main.py
 ├── model.py
 ├── qt_main.py
 ├── visualization.py
