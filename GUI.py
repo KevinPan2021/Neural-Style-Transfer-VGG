@@ -3,6 +3,7 @@ application_name = 'Neural Style Transfer'
 from PyQt5.QtGui import QPixmap, QImage, QIcon
 from PyQt5.QtCore import pyqtSignal, QThread
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QFileDialog
+from PyQt5 import uic
 
 import sys
 import numpy as np
@@ -14,7 +15,6 @@ import re
 import os
 
 from model import VGG19
-from qt_main import Ui_Application
 from main import GPU_Device, get_style_model_and_losses, load_image
 
 
@@ -91,16 +91,15 @@ class StyleTransferWorker(QThread):
         
 
 
-class QT_Action(Ui_Application, QMainWindow):
+class QT_Action(QMainWindow):
     
     def __init__(self):
         # system variable
         super(QT_Action, self).__init__()
-        self.setupUi(self)
-        self.retranslateUi(self)
-        self.setWindowIcon(QIcon('favicon.png')) # changed the window icon
+        uic.loadUi('qt_main.ui', self)
+        
         self.setWindowTitle(application_name) # set the title
-        self.progressBar.setValue(0)
+
         
         # runtime variable
         self.model = None

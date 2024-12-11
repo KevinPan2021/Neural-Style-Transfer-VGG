@@ -1,9 +1,8 @@
 import torch
 import torch.nn as nn
 import sys
-from torchsummary import summary
 
-path = '../pytorch_model_weights/'
+path = '../pretrained_models/VGG/'
 sys.path.append(path)
 
 from torchvision.models import vgg19
@@ -35,7 +34,6 @@ class VGG19(nn.Module):
 
 def main():
     model = VGG19()
-    summary(model, input_size=(3, 224, 224))
     
     
 if __name__ == "__main__":
